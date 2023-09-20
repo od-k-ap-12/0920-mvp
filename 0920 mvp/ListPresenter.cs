@@ -17,6 +17,7 @@ namespace _0920_mvp
             _view = view;
             _view.SaveEvent += new EventHandler<EventArgs>(OnSave);
             _view.ShowAllEvent += new EventHandler<EventArgs>(OnShowAll);
+            _view.SearchEvent += new EventHandler<EventArgs>(OnSearch);
         }
 
         private void OnSave(object sender, EventArgs e)
@@ -39,6 +40,34 @@ namespace _0920_mvp
             try
             {
                 _view.People = _model.ShowAll();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            UpdateView();
+        }
+        private void OnSearch(object sender, EventArgs e)
+        {
+            try
+            {
+                _view.People = "";
+                bool ifFound=false;
+                List<string> ParsePeople = _model.Search();
+                foreach(string Person in ParsePeople)
+                {
+                    if (Person.Contains(_view.NameSearch)&&_view.NameSearch!="")
+                    {
+                        ifFound = true;
+                        _view.People += Person+'\n';
+                    }
+                }
+                if (ifFound == false)
+                {
+                    _view.People = "Not found";
+                }
 
             }
             catch (Exception)

@@ -15,9 +15,12 @@ namespace _0920_mvp
 
         public void Save()
         {
-            StreamWriter sw = new StreamWriter("People.txt", true);
-            sw.WriteLine("Name: "+PersonName+" Age: "+PersonAge);
-            sw.Close();
+            if (PersonName != "" && PersonAge != "")
+            {
+                StreamWriter sw = new StreamWriter("People.txt", true);
+                sw.WriteLine("Name: " + PersonName + " Age: " + PersonAge);
+                sw.Close();
+            }
         }
         public string ShowAll()
         {
@@ -26,6 +29,20 @@ namespace _0920_mvp
             AllPeople = File.ReadAllText("People.txt");
             sr.Close();
             return AllPeople;
+        }
+        public List<string> Search()
+        {
+            List<string> ParsePeople=new List<string>();
+            StreamReader sr = new StreamReader("People.txt", Encoding.UTF8);
+            if (sr != null)
+            {
+                while (!sr.EndOfStream)
+                {
+                    ParsePeople.Add(sr.ReadLine() + '\n');
+                }
+            }
+            sr.Close();
+            return ParsePeople;
         }
     }
 }

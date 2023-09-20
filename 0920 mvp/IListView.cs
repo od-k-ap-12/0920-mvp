@@ -16,5 +16,6 @@ namespace _0920_mvp
 
         event EventHandler<EventArgs> SaveEvent;
         event EventHandler<EventArgs> ShowAllEvent;
+        event EventHandler<EventArgs> SearchEvent;
     }
 }

@@ -40,6 +40,7 @@ namespace _0920_mvp
 
         public event EventHandler<EventArgs> SaveEvent;
         public event EventHandler<EventArgs> ShowAllEvent;
+        public event EventHandler<EventArgs> SearchEvent;
         public Form1()
         {
             InitializeComponent();
@@ -59,26 +60,20 @@ namespace _0920_mvp
 
         private void buttonShowAll_Click(object sender, EventArgs e)
         {
-            /*     List<string> People = new List<string>();
-                 //string AllPeople = "";
-                 StreamReader sr = new StreamReader("People.txt", Encoding.UTF8);
-     *//*            if (sr != null)
-                 {
-                     //AllPersons = AllPersons += sr.ReadLine() + '\n';
-                     People.Add(sr.ReadLine());
-                 }*//*
-                 //AllPeople=string.Join("\n", People);
-                 this.People=File.ReadAllText("People.txt");
-                 sr.Close();
-
-                *//* foreach (string PeopleItem in People)
-                 {
-                     this.People += PeopleItem.ToString();
-                     this.People += '\n';
-                 }*/
             try
             {
                 ShowAllEvent?.Invoke(this, EventArgs.Empty);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SearchEvent?.Invoke(this, EventArgs.Empty);
             }
             catch (Exception ex)
             {

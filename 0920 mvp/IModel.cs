@@ -14,5 +14,6 @@ namespace _0920_mvp
 
         void Save();
         string ShowAll();
+        List<string> Search();
     }
 }
