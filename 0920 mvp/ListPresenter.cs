@@ -38,13 +38,7 @@ namespace _0920_mvp
         {
             try
             {
-                List<string> People = _model.ShowAll();
-                foreach (string PeopleItem in People)
-                {
-                    _view.People += PeopleItem;
-                    _view.People += '\n';
-                }
-                //_view.People = _model.ShowAll();
+                _view.People = _model.ShowAll();
 
             }
             catch (Exception)

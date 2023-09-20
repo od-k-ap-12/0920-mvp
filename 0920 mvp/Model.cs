@@ -19,19 +19,13 @@ namespace _0920_mvp
             sw.WriteLine("Name: "+PersonName+" Age: "+PersonAge);
             sw.Close();
         }
-        public List<string> ShowAll()
+        public string ShowAll()
         {
-           List<string> People = new List<string>();
             string AllPeople = "";
             StreamReader sr = new StreamReader("People.txt", Encoding.UTF8);
-            if (sr != null)
-            {
-                //AllPersons = AllPersons += sr.ReadLine() + '\n';
-                People.Add(sr.ReadLine());
-            }
-            //AllPeople=string.Join("\n", People);
+            AllPeople = File.ReadAllText("People.txt");
             sr.Close();
-            return People;
+            return AllPeople;
         }
     }
 }

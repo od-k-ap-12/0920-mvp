@@ -13,6 +13,6 @@ namespace _0920_mvp
         string PersonAge { get; set; }
 
         void Save();
-        List<string> ShowAll();
+        string ShowAll();
     }
 }
